@@ -143,15 +143,21 @@ function toggleBold() {
 }
 
 function changeTextColor() {
+    const colors = ['#F8D210','#FA26A0','#000000','#2FF3E0','#59981A','#A49393'];
     const textElement = document.getElementById('demo-text');
-    const colors = ['#F8D210','#FA26A0','#000000','#2FF3E0','#59981A','#A49393']
+    const colorPickerCheckBox = document.getElementById('color-picker-active').checked;
+    if (colorPickerCheckBox === true) {
+        const colorPickerColor = document.getElementById("color-picker").value;
+        console.log(colorPickerColor);
+        textElement.style.color = colorPickerColor;
+    } else {
+        const randomIndex = Math.floor(Math.random() * colors.length)
+        console.log("Zufälliger Index", randomIndex)
+        const randomColor = colors[randomIndex]
+        textElement.style.color = randomColor
+    }
     // Wähle zufällige Farbe aus dem colors-Array
-    const randomIndex = Math.floor(Math.random() * colors.length)
-    console.log("Zufälliger Index", randomIndex)
-    const randomColor = colors[randomIndex]
-    // zufälliger Wert aus einem Array --> nameDesArrays[Index], wobei Index dann zufällig ist
-    // Wie bekomme ich den zufälligen Index? --> Math.floor(Math.random * längeDesArrays)
-    textElement.style.color = randomColor
+
     logAction("Text verändert", "Text in anderer Farbe")
 
 }
