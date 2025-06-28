@@ -167,4 +167,23 @@ function resetText() {
 
 }
 
+//array um den theme-kürzel quasi theme-light oderso in einen "schönen" Namen zu übersetzen
+const themeArray = {
+    'theme-light': 'Helles Theme',
+    'theme-dark': 'Dunkles Theme',
+    'theme-blue': 'Blaues Theme',
+    'theme-default': 'Standard Theme'
+}
 
+let currentTheme = 'Standard Theme';
+
+function applyTheme(theme) {
+    if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
+        document.body.className = '';
+    } else {
+        document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
+    }
+    currentTheme = themeArray[theme]; //ausgeschriebener Name des Themes aus dem Array laden
+    document.getElementById('current-theme').textContent = currentTheme; //textfeld anpassen
+    logAction('Theme gewechselt', currentTheme); //loggen 
+}

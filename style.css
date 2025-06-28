@@ -113,3 +113,63 @@ header p {
 .text-colored {
     color: #EED6D3;
 }
+
+/* Theme-Wechsler */
+.theme-info {
+    background: #E8B4B8;
+    border: 2px solid #3B0404;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.theme-info p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+/* Theme-Variationen */
+body.theme-light {
+    background-color: #ffffff;
+    color: #2c3e50;
+}
+
+body.theme-light .component {
+    background: #f8f9fa;
+    border-left-color: #6c757d;
+}
+
+body.theme-dark {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.theme-dark .component,
+body.theme-dark header {
+    background: #34495e;
+    color: #ecf0f1;
+    border-left-color: #3498db;
+}
+
+body.theme-dark .counter-display,
+body.theme-dark .text-display,
+body.theme-dark .theme-info {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #7f8c8d;
+}
+
+body.theme-blue {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+body.theme-blue .component,
+body.theme-blue header {
+    background: rgba(255,255,255,0.95);
+    color: #2c3e50;
+    border-left-color: #667eea;
+}

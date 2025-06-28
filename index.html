@@ -50,6 +50,24 @@
                     <button class="btn" onclick="resetText()">Text zurücksetzen</button>
                  </div>
             </section>
+            <section class="component">
+                <h2>Theme-Wechsler</h2>
+                <p>Dynamische CSS-Klassen und Layout-Änderungen</p>
+
+                <div class="theme-info">
+                    <p>Aktuelles Theme: <span id="current-theme">Standard</span></p>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn" onclick="applyTheme('theme-light')">Helles Theme</button>
+                    <button class="btn" onclick="applyTheme('theme-dark')">Dunkles Theme</button>
+                    <button class="btn" onclick="applyTheme('theme-blue')">Blaues Theme</button>
+                    <button class="btn" onclick="applyTheme('theme-default')">Standard Theme</button>
+                </div>
+
+                <div id="theme-feedback" class="feedback"></div>
+            </section>
+
         </main>
         <footer>
             <p>&copy; 2025 Kurs 25-01</p>
