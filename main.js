@@ -168,7 +168,7 @@ function resetText() {
 }
 
 //array um den theme-kürzel quasi theme-light oderso in einen "schönen" Namen zu übersetzen
-const themeArray = {
+const availableThemes = {
     'theme-light': 'Helles Theme',
     'theme-dark': 'Dunkles Theme',
     'theme-blue': 'Blaues Theme',
@@ -178,12 +178,18 @@ const themeArray = {
 let currentTheme = 'Standard Theme';
 
 function applyTheme(theme) {
-    if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
-        document.body.className = '';
+    if (theme in availableThemes) {  //verhindert funktionsaufruf via console mit einem nicht existenten theme, SINNVOLL???
+        if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
+            document.body.className = '';
+        } else {
+            document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
+        }
     } else {
-        document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
+        console.log("Ungültiges Theme wurde übergeben")  // zb wenn funktion via console aufgerufen wird mit applyTheme("asdf")
+        return;
     }
-    currentTheme = themeArray[theme]; //ausgeschriebener Name des Themes aus dem Array laden
+
+    currentTheme = availableThemes[theme]; //ausgeschriebener Name des Themes aus dem objekt availableThemes laden
     document.getElementById('current-theme').textContent = currentTheme; //textfeld anpassen
     logAction('Theme gewechselt', currentTheme); //loggen 
 }
