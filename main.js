@@ -212,3 +212,80 @@ function applyTheme() {
     document.getElementById('current-theme').textContent = currentTheme; //textfeld anpassen
     logAction('Theme gewechselt', currentTheme);
 }
+
+let currentDisplay = '0';
+const allowedOperators = ['+', "-", "*", "/",]
+let currentResult = '';
+
+function updateDisplay(value){
+    if (currentDisplay === '0') {
+        currentDisplay = value;
+    } else if (currentResult != '' && allowedOperators.includes(value.toString())) {
+        currentDisplay = currentResult.toString() + value.toString();
+        currentResult = ''
+        console.log("success")
+    } else if (currentResult != '') {
+        clearDisplay();
+        currentDisplay = value;
+    } else {
+        currentDisplay = currentDisplay.toString() + value.toString();
+    }
+    document.getElementById('calc-input').textContent = currentDisplay;
+    console.log(currentDisplay);
+}
+
+function clearDisplay(){
+    currentDisplay = '0';
+    currentResult = '';
+    document.getElementById('calc-input').textContent = currentDisplay;
+    document.getElementById("calc-result-number").textContent = currentResult.toString();
+}
+
+function removeLastInput() {
+    if (currentDisplay.length > 1) {
+        currentDisplay = currentDisplay.slice(0, -1);
+    } else {
+        currentDisplay = '0';
+    }
+    document.getElementById('calc-input').textContent = currentDisplay;
+}
+
+function getResult() {
+    const match = currentDisplay.match(/^(\d+)([\+\-\*\/])(\d+)$/);
+    const numberOne = parseInt(match[1], 10);
+    const operator = match[2];
+    const numberTwo = parseInt(match[3], 10);
+    console.log(numberOne, numberTwo, operator);
+    console.log(typeof numberOne);
+    console.log(typeof numberTwo);
+    console.log(typeof operator);
+
+    switch (operator) {
+        case "+":
+            currentResult = numberOne + numberTwo;
+            showResult();
+            break;
+        case "-":
+            currentResult = numberOne - numberTwo;
+            showResult();
+            break;
+        case "*":
+            currentResult = numberOne * numberTwo;
+            showResult();
+            break;
+        case "/":
+            if (numberTwo === 0) {
+                currentResult = "Teilen durch 0 nicht möglich";
+                showResult("");
+                break;
+            }
+            currentResult = numberOne / numberTwo;
+            showResult();
+            break;
+    }
+}
+
+function showResult() {
+    document.getElementById('calc-result-number').textContent = currentResult.toString();
+    logAction("Ergebnis ausgeben", currentResult);
+}

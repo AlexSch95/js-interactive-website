@@ -17,6 +17,42 @@
         </header>
         <main>
             <section class="component">
+                <h2>Taschenrechner</h2>
+                <p><strong>Was lernen wir hier?</strong> Komplexe Anwendungslogik und Eingabevalidierung</p>
+                <div class="calculator">
+                    <!-- Display zum Anzeigen der Eingabe und Ergebnis des Taschenrechners -->
+                    <div class="calculator-display">
+                        <div id="calc-input">0</div>
+                        <div id="calc-result">= <span id="calc-result-number"></span></div>
+                    </div>
+                    <div class="calculator-buttons">
+                        <!-- Erste Reihe: Clear, Division, Multiplikation, Ein Element löschen -->
+                         <button class="btn calc-btn" onclick="clearDisplay()">C</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('/')">/</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('*')">*</button>
+                         <button class="btn calc-btn" onclick="removeLastInput()">←</button>
+                         <!-- Zweite Reihe: 7, 8, 9, Subtraktion -->
+                          <button class="btn calc-btn" onclick="updateDisplay('7')">7</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('8')">8</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('9')">9</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('-')">-</button>
+                         <!-- Dritte Reihe: 4, 5, 6, Addition -->
+                          <button class="btn calc-btn" onclick="updateDisplay('4')">4</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('5')">5</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('6')">6</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('+')">+</button>
+                         <!-- Vierte Reihe: 1, 2, 3, Equals -->
+                          <button class="btn calc-btn" onclick="updateDisplay('1')">1</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('2')">2</button>
+                         <button class="btn calc-btn" onclick="updateDisplay('3')">3</button>
+                         <button class="btn calc-btn equals" onclick="getResult()" rowspan="2">=</button>
+                         <!-- Fünfte Reihe: Null und Komma -->
+                          <button class="btn calc-btn zero" onclick="updateDisplay('0')">0</button>
+                         <button class="btn calc-btn" onclick="updateDisplay(',')">,</button>
+                    </div>
+                </div>
+             </section>
+            <section class="component">
                 <!-- Komponente 1: Counter implementieren -->
                 <h2>Counter-Komponente</h2>
                 <p><strong>Was lernen wir hier?</strong> Grundlagen der Zustandsverwaltung und Event-Handling</p>
@@ -67,6 +103,7 @@
                         <option value="theme-light">Helles Theme</option>
                         <option value="theme-dark">Dunkles Theme</option>
                         <option value="theme-blue">Blaues Theme</option>
+                        <option value="theme-green">Grünes Theme</option>
                         <option value="theme-default">Standard Theme</option>
                     </select>
                     <button class="btn" onclick="applyTheme()">Theme Anwenden</button>
