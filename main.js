@@ -183,19 +183,32 @@ const availableThemes = {
 
 let currentTheme = 'Standard Theme';
 
-function applyTheme(theme) {
-    if (theme in availableThemes) {  //verhindert funktionsaufruf via console mit einem nicht existenten theme, SINNVOLL???
-        if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
-            document.body.className = '';
-        } else {
-            document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
-        }
-    } else {
-        console.log("Ungültiges Theme wurde übergeben")  // zb wenn funktion via console aufgerufen wird mit applyTheme("asdf")
-        return;
-    }
+// function applyTheme(theme) {
+//     if (theme in availableThemes) {  //verhindert funktionsaufruf via console mit einem nicht existenten theme, SINNVOLL???
+//         if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
+//             document.body.className = '';
+//         } else {
+//             document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
+//         }
+//     } else {
+//         console.log("Ungültiges Theme wurde übergeben")  // zb wenn funktion via console aufgerufen wird mit applyTheme("asdf")
+//         return;
+//     }
 
-    currentTheme = availableThemes[theme]; //ausgeschriebener Name des Themes aus dem objekt availableThemes laden
+//     currentTheme = availableThemes[theme]; //ausgeschriebener Name des Themes aus dem objekt availableThemes laden
+//     document.getElementById('current-theme').textContent = currentTheme; //textfeld anpassen
+//     logAction('Theme gewechselt', currentTheme); //loggen 
+// }
+
+function applyTheme() {
+    let theme = document.getElementById("themeselect").value;
+    if (theme === 'theme-default') { //prüft ob der funktion theme-default übergeben wurde zum resetten
+        document.body.className = '';
+    } else {
+        document.body.className = `${theme}`; // setzt das theme das via funktionsaufruf übergeben wurde
+    }
+    let themeName = document.getElementById("themeselect").options;
+    currentTheme = themeName[themeName.selectedIndex].text; //laden des texts aus dem dropdownmenü
     document.getElementById('current-theme').textContent = currentTheme; //textfeld anpassen
-    logAction('Theme gewechselt', currentTheme); //loggen 
+    logAction('Theme gewechselt', currentTheme);
 }

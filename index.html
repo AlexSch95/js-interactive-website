@@ -63,10 +63,13 @@
                 </div>
 
                 <div class="btn-group">
-                    <button class="btn" onclick="applyTheme('theme-light')">Helles Theme</button>
-                    <button class="btn" onclick="applyTheme('theme-dark')">Dunkles Theme</button>
-                    <button class="btn" onclick="applyTheme('theme-blue')">Blaues Theme</button>
-                    <button class="btn" onclick="applyTheme('theme-default')">Standard Theme</button>
+                    <select name="themeselector" id="themeselect">
+                        <option value="theme-light">Helles Theme</option>
+                        <option value="theme-dark">Dunkles Theme</option>
+                        <option value="theme-blue">Blaues Theme</option>
+                        <option value="theme-default">Standard Theme</option>
+                    </select>
+                    <button class="btn" onclick="applyTheme()">Theme Anwenden</button>
                 </div>
 
                 <div id="theme-feedback" class="feedback"></div>
