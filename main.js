@@ -220,13 +220,13 @@ let currentResult = '';
 function updateDisplay(value){
     if (currentDisplay === '0') {
         currentDisplay = value;
+    } else if (allowedOperators.includes(value.toString()) && allowedOperators.some(c => currentDisplay.includes(c))) {
+        getResult();
+        currentDisplay = currentResult.toString() + value.toString();
     } else if (currentResult != '' && allowedOperators.includes(value.toString())) {
         currentDisplay = currentResult.toString() + value.toString();
         currentResult = ''
         console.log("success")
-    } else if (currentResult != '') {
-        clearDisplay();
-        currentDisplay = value;
     } else {
         currentDisplay = currentDisplay.toString() + value.toString();
     }
@@ -251,7 +251,7 @@ function removeLastInput() {
 }
 
 function getResult() {
-    const match = currentDisplay.match(/^(\d+)([\+\-\*\/])(\d+)$/);
+    const match = currentDisplay.match(/^(-?\d+)([\+\-\*\/])(-?\d+)$/);
     const numberOne = parseInt(match[1], 10);
     const operator = match[2];
     const numberTwo = parseInt(match[3], 10);
@@ -276,6 +276,7 @@ function getResult() {
         case "/":
             if (numberTwo === 0) {
                 currentResult = "Teilen durch 0 nicht möglich";
+                alert("Teilen durch 0 nicht möglich")
                 showResult("");
                 break;
             }
